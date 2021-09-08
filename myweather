@@ -1,0 +1,26 @@
+#!/usr/bin/python
+
+import requests
+import sys
+
+if(len(sys.argv) <= 1):
+    raise ValueError('Enter city name.')
+
+
+API_key = " - YOUR KEY HERE -  "
+city_name = sys.argv[1].capitalize()
+url = f"http://api.openweathermap.org/data/2.5/find?q={city_name}&units=metric&appid={API_key}"
+
+r = requests.get(url)
+
+resp = r.json()
+
+temp_data = resp['list'][0]['main']['temp']
+
+
+if(temp_data > 34):
+    print(f' {city_name} ➤ 🔥 {temp_data}°C')
+elif(temp_data < 10):
+    print(f' {city_name} ➤ ❄️ {temp_data}°C')
+else:
+    print(f' {city_name} ➤ 🌤 {temp_data}°C')
