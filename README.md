@@ -8,4 +8,6 @@ Script that return the current weather
 
 ## Usage
 ```myweather <city name>```
+
+
 ![Terminal](./img/image.png)
